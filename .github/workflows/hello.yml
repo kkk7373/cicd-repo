@@ -1,10 +1,10 @@
 name: Hello #ワークフロー名
-on: [pushm pull_request] #トリガーイベント　配列での記述も可能
+on: [push, pull_request] #トリガーイベント　配列での記述も可能
 jobs: #ジョブの定義
   hello: #jobID
     runs-on: ubuntu-latest #ランナー
     steps: #ステップの定義
       - run: echo "Hello world" #シェルコマンド実行
       - uses: actions/checkout@v4 #アクション呼び出し
-        with:
+        with: #withでパラメータを渡すことができる。
           ref: main
