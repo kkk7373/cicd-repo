@@ -11,6 +11,7 @@ on:
 
 jobs:
   run:
-    runs-on: ubuntu-26
+    runs-on: ubuntu-latest
     steps:
-      -run: echo "${{inputs.greeting}}"
+      - name: Print greeting
+        run: echo "${{ inputs.greeting }}"
