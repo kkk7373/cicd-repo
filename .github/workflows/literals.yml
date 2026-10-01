@@ -2,13 +2,14 @@ name: Literals
 on: push
 jobs:
   print:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     env:
       literal-null: ${{ null }}
       literal-num: ${{ 1234 }}
       literal-str: ${{ 'hello' }} #''で囲う必要あり
       literal-str2: world # 省略記法
-      literal-arr: ${{ github.event.*commits }} # 配列 オブジェクトフィルター　指定したプロパティを配列で取得する。
+      literal-arr: ${{ github.event.commits.*.message }} # 配列 オブジェクトフィルター
+      contain-modify: ${{ contains(literal-arr, 'modify') }} # 配列に特定の値が含まれるか
 
-    stepps:
-      - run: echo ${ literal-arr } # 配列の中身を展開して表示する。
+    steps:
+      - run: echo "${ contain-modify }"
