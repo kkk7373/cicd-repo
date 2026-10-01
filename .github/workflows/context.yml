@@ -8,6 +8,8 @@ jobs:
 
     env:
       USERNAME: ${{ vars.USERNAME }}
+      PASSWORD: ${{ secets.PASSWORD }}
 
     steps:
       - run: echo "${USERNAME}"
+      - run: echo "${PASSWORD}"
