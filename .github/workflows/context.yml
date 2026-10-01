@@ -8,7 +8,7 @@ jobs:
 
     env:
       USERNAME: ${{ vars.USERNAME }}
-      PASSWORD: ${{ secets.PASSWORD }}
+      PASSWORD: ${{ secrets.PASSWORD }}
 
     steps:
       - run: echo "${USERNAME}"
