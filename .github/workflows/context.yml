@@ -6,10 +6,11 @@ jobs:
   print:
     runs-on: ubuntu-latest
 
-    env:
-      USERNAME: ${{ vars.USERNAME }}
-      PASSWORD: ${{ secrets.PASSWORD }}
+    env: # 環境変数をセット
+      # コンテキストの値を使う場合は中間環境変数を作成して使う。
+      USERNAME: ${{ vars.USERNAME }} #　変数
+      PASSWORD: ${{ secrets.PASSWORD }} # コンソール上、または'gh set secret set PASSWORD --body '***'
 
     steps:
       - run: echo "${USERNAME}"
-      - run: echo "${PASSWORD}"
+      - run: echo "${PASSWORD}" # マスクされる。

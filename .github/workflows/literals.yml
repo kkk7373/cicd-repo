@@ -1,0 +1,14 @@
+name: Literals
+on: push
+jobs:
+  print:
+    runs-on: ubuntu:latest
+    env:
+      literal-null: ${{ null }}
+      literal-num: ${{ 1234 }}
+      literal-str: ${{ 'hello' }} #''で囲う必要あり
+      literal-str2: world # 省略記法
+      literal-arr: ${{ github.event.*commits }} # 配列 オブジェクトフィルター　指定したプロパティを配列で取得する。
+
+    stepps:
+      - run: echo ${ literal-arr } # 配列の中身を展開して表示する。
