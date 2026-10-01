@@ -9,7 +9,7 @@ jobs:
       literal-str: ${{ 'hello' }} #''で囲う必要あり
       literal-str2: world # 省略記法
       literal-arr: ${{ github.event.commits.*.message }} # 配列 オブジェクトフィルター
-      contain-modify: ${{ contains(literal-arr, 'modify') }} # 配列に特定の値が含まれるか
+      contain-modify: ${{ contains(env.literal-arr, 'modify') }} # 配列に特定の値が含まれるか
 
     steps:
-      - run: echo "${ contain-modify }"
+      - run: echo "$contain-modify"
