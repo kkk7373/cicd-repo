@@ -1,0 +1,19 @@
+name: GITHUB_OUTPUT
+
+on: push
+
+jobs:
+  share:
+    runs-on: ubuntu-latest
+    steps:
+      - id: source #ステップID
+        run: echo "result=hello" >> ${GITHUB_OUTPUT} #GITHUB_OUTPUTに書き込むことで、後続のステップで参照可能になる。
+      - id: target #ステップID
+        env:
+          RESULT: ${{ steps.source.outputs.result }} #sourceステップのresultを参照　${{steps.<stepID>.outputs.<outputName>}}で参照可能
+        run: echo "${RESULT}" #helloが出力される。
+
+      - id: source2
+        run: echo "env_result=world" >> ${GITHUB_ENV} #GITHUB_ENVに書き込むことで、後続のステップで参照可能になる。
+      - id: target2
+        run: echo "${env_result}" #worldが出力される。

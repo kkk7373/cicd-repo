@@ -1,7 +1,9 @@
 name: Conditions
+run-name: Run by @${{ github.actor }} #実行者のユーザー名を表示
 on: push
 jobs:
-  skip-or-run:
+  skip-or-run: #ID
+    name: Skip or Run #ジョブ名
     runs-on: ubuntu-latest
     steps:
       - run: echo "hello"
