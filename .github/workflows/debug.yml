@@ -5,3 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "::debug::This is a debug message" ## debugの時のみ有効
+
+      - run: |
+          set -x
+          date
+          hostname
