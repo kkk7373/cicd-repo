@@ -1,0 +1,21 @@
+name: parallel job
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is job1"
+  job2: ## 複数設定したジョブは並列で実行される。ジョブ実行時間の短縮につながる。
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This is job2"
+      - id: job2id
+        run: echo "result=job2 result" >> "${GITHUB_OUTPUT}" ## job2の結果を環境変数に格納する　GITHUB_ENVを使ってはジョブ館で共有できない。
+    outputs:
+      result: ${{ steps.job2id.outputs.result }} ## job2の結果をjob3に渡すためにoutputsで定義する
+  job3:
+    runs-on: ubuntu-latest
+    needs: [job1, job2] ## job1とjob2が完了してから実行される job1,job2に依存する形で実行される。
+    steps:
+      - run: echo "This is job3"
+      - run: echo "job2 result is ${{ needs.job2.outputs.result }}" ## job2の結果を参照する　needsコンテキストを経由する。

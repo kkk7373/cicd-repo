@@ -1,0 +1,15 @@
+name: Comment
+on: pull_request
+jobs:
+  comment:
+    runs-on: ubnuntu-latest
+    permissions: # github tokenの権限を設定する。デフォルトではreadのみ。writeにすることでコメントができる。
+      pull-requests: write
+      content: read
+
+    steps:
+      - uses: actions.checkout@v4
+      - run: gh pr comment "${{GITHUB_HEAD_REF}}" --body "Hello, ${GITHUB_ACTOR}! This is a comment from the workflow."
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} #githubAPIを使うためのトークン。デフォルトで用意されている。github.tokenでも利用できる。
