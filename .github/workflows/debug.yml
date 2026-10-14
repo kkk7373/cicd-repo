@@ -23,7 +23,7 @@ jobs:
       - run: echo "::error::This is an error message" ## エラーの時のみ有効
       - run: echo "::warning::This is a warning message" ## 警告の時のみ有効
       - run: echo "::notice::This is a notice message" ## 通知の時のみ有効
-      - run: |
-          echo "## example Title: rocket." >>  ${GITHUB_STEP_SUMMARY}
+      - run: | ## ステップサマリーの出力 マークダウン形式で出力可能
+          echo "## example Title: rocket." >>  ${GITHUB_STEP_SUMMARY} 
           echo "- first line" >>  ${GITHUB_STEP_SUMMARY}
           echo "- second line" >>  ${GITHUB_STEP_SUMMARY}
