@@ -24,6 +24,6 @@ jobs:
       - run: echo "::warning::This is a warning message" ## 警告の時のみ有効
       - run: echo "::notice::This is a notice message" ## 通知の時のみ有効
       - run: |
-          echo "## example Title: rocket." >>  ${{GITHUB_STEP_SUMMARY}}
-          echo "- first line" >>  ${{GITHUB_STEP_SUMMARY}}
-          echo "- second line" >>  ${{GITHUB_STEP_SUMMARY}}
+          echo "## example Title: rocket." >>  ${GITHUB_STEP_SUMMARY}
+          echo "- first line" >>  ${GITHUB_STEP_SUMMARY}
+          echo "- second line" >>  ${GITHUB_STEP_SUMMARY}
