@@ -20,3 +20,6 @@ jobs:
 
       - run: echo "::add-mask::$PASSEWORD" ## マスクする
       - run: echo "My password is $PASSEWORD" ## マスクされる
+      - run: echo "::error::This is an error message" ## エラーの時のみ有効
+      - run: echo "::warning::This is a warning message" ## 警告の時のみ有効
+      - run: echo "::notice::This is a notice message" ## 通知の時のみ有効
