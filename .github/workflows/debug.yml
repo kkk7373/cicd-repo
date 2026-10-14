@@ -6,7 +6,12 @@ jobs:
     steps:
       - run: echo "::debug::This is a debug message" ## debugの時のみ有効
 
-      - run: |
+      - run: | ## 簡単なプリントデバッグ
           set -x
-          date
+          date 
           hostname
+
+      - run: |
+          echo "::group:: Show environment variables"
+          printenv
+          echo "::endgroup::"
