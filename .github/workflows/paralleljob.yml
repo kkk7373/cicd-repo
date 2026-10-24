@@ -29,7 +29,7 @@ jobs:
     needs: [job1]
     env:
       JOB1_RESULT: ${{ needs.job1.outputs.result }} ## job1の結果を環境変数に格納する
-      steps:
-        - run: echo "This is job4"
-        - run: echo "job1 result is $JOB1_RESULT" ## job1の結果を参照する　環境変数を経由する。
+    steps:
+      - run: echo "This is job4"
+      - run: echo "job1 result is $JOB1_RESULT" ## job1の結果を参照する　環境変数を経由する。
 
