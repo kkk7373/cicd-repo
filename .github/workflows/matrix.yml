@@ -7,5 +7,5 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest] ## OSのマトリックスを定義する
     runs-on: ${{ matrix.os }} ## マトリックスのOSを指定する
     steps:
-      - run: echo "{ RUNNER_OS }" ## 実行環境のOSを表示する
+      - run: echo "${RUNNER_OS}" ## 実行環境のOSを表示する
         shell: bash
