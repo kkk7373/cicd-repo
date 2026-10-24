@@ -5,17 +5,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: date > date.txt
-      - use: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: uploaded
-          path: date.txt
+          name: uploaded ## アーティファクト名　ダウンロードする際はこれを参照
+          path: date.txt ## アップロードするフォルダ、ファイル名を指定可能
           retention: 7
 
   download-artifact:
     runs-on: ubuntu-latest
-    need: [upload-artifacts]
+    needss: [upload-artifacts]
     steps:
-      - use: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
           name: uploaded
           path: downloaded
