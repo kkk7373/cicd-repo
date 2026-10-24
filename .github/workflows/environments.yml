@@ -17,6 +17,6 @@ jobs:
 
     steps:
       - run: |
-        echo "Username: $USERNAME"
+          echo "Username: $USERNAME"
       - run: |
-        echo "Password: $PASSWORD"
+          echo "Password: $PASSWORD"
