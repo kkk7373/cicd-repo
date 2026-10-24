@@ -1,5 +1,5 @@
 name: Environments
-on: 
+on:
   workflow_dispatch:
     inputs:
       environment-name:
@@ -11,13 +11,11 @@ jobs:
   print:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment-name }} ## workflow_dispatchのinputsで指定されたenvironment-nameを参照する
-    env: 
+    env:
       USERNAME: ${{vars.ID}}
       PASSWORD: ${{secrets.PASS}}
 
     steps:
-      - run: |
-        echo "This is a job running in the ${{ inputs.environment-name }} environment"
       - run: |
         echo "Username: $USERNAME"
       - run: |
