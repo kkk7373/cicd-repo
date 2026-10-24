@@ -3,10 +3,12 @@ on: push
 jobs:
   job1:
     runs-on: ubuntu-latest
-    id: job1id
     steps:
       - run: echo "This is job1"
-      - run: echo "result=job1 result" >> "${GITHUB_OUTPUT}" ## job1の結果を環境変数に格納する　GITHUB_ENVを使ってはジョブ館で共有できない。
+      - id: job1id
+        run: echo "result=job1 result" >> "${GITHUB_OUTPUT}" ## job1の結果を環境変数に格納する　GITHUB_ENVを使ってはジョブ館で共有できない。
+    outputs:
+      result: ${{ steps.job1id.outputs.result }} ## job1の結果をjob
   job2: ## 複数設定したジョブは並列で実行される。ジョブ実行時間の短縮につながる。
     runs-on: ubuntu-latest
     steps:
