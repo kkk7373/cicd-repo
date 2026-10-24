@@ -9,3 +9,28 @@ jobs:
     steps:
       - run: echo "${RUNNER_OS}" ## 実行環境のOSを表示する
         shell: bash
+
+  multi-matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest] ## OSのマトリックスを定義する
+        node: [14, 16, 18] ## Node.jsのバージョンのマトリックスを定義する
+    runs-on: ${{ matrix.os }} ## マトリックスのOSを指定する
+    steps:
+      - run: echo "${RUNNER_OS}, Node.js version: ${matrix.node}" ## 実行環境のOSとNode.jsのバージョンを表示する
+        shell: bash
+
+  include-matrix:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            node: 14
+          - os: ubuntu-latest
+            node: 16
+          - os: windows-latest
+            node: 18
+    runs-on: ${{ matrix.os }} ## マトリックスのOSを指定する
+    steps:
+      - run: echo "${RUNNER_OS}, Node.js version: ${matrix.node}" ## 実行環境のOSとNode.jsのバージョンを表示する
+        shell: bash
