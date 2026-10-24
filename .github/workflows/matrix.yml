@@ -17,6 +17,9 @@ jobs:
         node: [14, 16, 18] ## Node.jsのバージョンのマトリックスを定義する
     runs-on: ${{ matrix.os }} ## マトリックスのOSを指定する
     steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
       - run: echo "${RUNNER_OS}, Node.js version ${matrix.node}" ## 実行環境のOSとNode.jsのバージョンを表示する
         shell: bash
 
@@ -31,6 +34,10 @@ jobs:
           - os: windows-latest
             node: 18
     runs-on: ${{ matrix.os }} ## マトリックスのOSを指定する
+
     steps:
-      - run: echo "${RUNNER_OS}, Node.js version ${matrix.node}" ## 実行環境のOSとNode.jsのバージョンを表示する
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: echo "${RUNNER_OS}, Node.js version ${{matrix.node}}" ## 実行環境のOSとNode.jsのバージョンを表示する
         shell: bash
