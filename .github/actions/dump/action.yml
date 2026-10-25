@@ -6,12 +6,12 @@ inputs:
   enable-context:
     defaut: "true"
     required: false
-    descriptions: コンテクストをログ出力するか
+    description: コンテクストをログ出力するか
 
 outputs:
   dumped-date:
     value: ${{ steps.current.outputs.date }}
-    descriptions: ダンプ日時
+    description: ダンプ日時
 
 runs:
   using: composite
@@ -22,6 +22,7 @@ runs:
       if: ${{ inputs.enable-context == 'true' }}
       env:
         CONTEXT: ${{ toJSON(github) }}
+      shell: bash
     - id: current
       run: echo "date=$(date)" >> "${GIHUB_OUTPUT}"
       shell: bash
