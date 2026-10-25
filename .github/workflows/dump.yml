@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: acions/checkout@v4
-      - uses: ./.github/acions/dump/
+      - uses: ./.github/actions/dump/
         id: dump
         with:
           enable-context: "true"
